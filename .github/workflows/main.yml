@@ -6,7 +6,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "4,10 * * * *"
+    - cron: "0,10 * * * *"
 
 jobs:
   scrape_and_write:
