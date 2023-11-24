@@ -25,7 +25,11 @@ jobs:
 
     - name: Run web scraper
       run: python ./convert.py
-
+    - name: Check if there are changes to commit
+      id: git-status
+      run: |
+        git diff --quiet || echo "Changes detected"
+        git diff --quiet || exit 0
     - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
