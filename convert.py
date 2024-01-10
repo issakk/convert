@@ -18,7 +18,7 @@ print(html)
 # 这里只是一个示例，你可以根据需要修改提取的逻辑
 # body > div.container > section:nth-child(2) > div > div > table > tbody > tr:nth-child(1) > td:nth-child(2)
 # 使用 CSS 选择器查找指定元素
-element = soup.select_one('#readme > div.Box-body.px-5.pb-5 > article > p:nth-child(9) > a:nth-child(1)')
+element = soup.select_one('#repo-content-pjax-container > div > div > div.Layout.Layout--flowRow-until-md.react-repos-overview-margin.Layout--sidebarPosition-end.Layout--sidebarPosition-flowRow-end > div.Layout-main > react-partial > div > div > div.Box-sc-g0xbh4-0.fSWWem > div > div > div.Box-sc-g0xbh4-0.hFCATI > div.Box-sc-g0xbh4-0.jAVTmU > div > div:nth-child(3) > div.Box-sc-g0xbh4-0.yfPnm > div.Box-sc-g0xbh4-0.ehcSsh > div > div.Box-sc-g0xbh4-0.bJMeLZ.js-snippet-clipboard-copy-unpositioned > article > p:nth-child(9) > a:nth-child(1)')
 
 # 提取元素的文本内容
 if element:
