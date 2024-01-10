@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def find_first_url(text):
-    pattern = 'https://raw.githubusercontent.com/snakem982/proxypool/main/mihomo[a-zA-Z0-9]*?.ymal'
+    pattern = 'https://raw.githubusercontent.com/snakem982/proxypool/main/mihomo[a-zA-Z0-9]*?.yaml'
     match = re.search(pattern, text)
     return match.group(0) if match else None
 
