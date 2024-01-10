@@ -28,6 +28,7 @@ def main():
     print('github.text: ' + github_text)
 
     result = find_first_url(github_text)
+    print('result: '+result)
     if result:
         write_content_to_file(result)
         time.sleep(5)
