@@ -1,6 +1,6 @@
 import re
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 def find_first_url(text):
@@ -21,7 +21,8 @@ def write_content_to_file(url,content, log_path):
         file.write(content)
     
     with open(log_path, 'a', encoding='utf-8') as log_file:  # 'a' for appending
-        log_entry = f"Fetched {url} at {datetime.now()}\n"
+        current_time = datetime.utcnow() + timedelta(hours=8)
+        log_entry = f"Fetched {result} at {current_time}\n"
         log_file.write(log_entry)
         print('Added log entry: ', log_entry)
 
