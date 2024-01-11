@@ -29,7 +29,7 @@ def main():
     github_text = get_github_content('https://raw.githubusercontent.com/snakem982/proxypool/main/README.md')
     url = find_first_url(github_text)
     print('url: '+url)
-    if result:
+    if url:
         github = get_github_content(url)
         print('fetched!')
         write_content_to_file(url,github, 'fetch_log.txt')
