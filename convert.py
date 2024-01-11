@@ -1,5 +1,7 @@
 import re
 import requests
+from datetime import datetime
+
 
 def find_first_url(text):
     pattern = 'https://raw.githubusercontent.com/snakem982/proxypool/main/mihomo[a-zA-Z0-9]*?.yaml'
@@ -13,11 +15,15 @@ def get_github_content(url):
     response = requests.get(url, headers=headers)
     return response.text
 
-def write_content_to_file(content):
+def write_content_to_file(content, log_path):
     file_path = 'github.txt'
     with open(file_path, 'w', encoding='utf-8') as file:
         file.write(content)
-        print('内容已写入文件')
+    
+    with open(log_path, 'a', encoding='utf-8') as log_file:  # 'a' for appending
+        log_entry = f"Fetched {result} at {datetime.now()}\n"
+        log_file.write(log_entry)
+        print('Added log entry: ', log_entry)
 
 def main():
     github_text = get_github_content('https://raw.githubusercontent.com/snakem982/proxypool/main/README.md')
@@ -26,7 +32,7 @@ def main():
     if result:
         github = get_github_content(result)
         print('fetched!')
-        write_content_to_file(github)
+        write_content_to_file(github, 'fetch_log.txt')
         
 if __name__ == "__main__":
     main()
