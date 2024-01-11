@@ -22,7 +22,7 @@ def write_content_to_file(url,content, log_path):
     
     with open(log_path, 'a', encoding='utf-8') as log_file:  # 'a' for appending
         current_time = datetime.utcnow() + timedelta(hours=8)
-        log_entry = f"Fetched {result} at {current_time}\n"
+        log_entry = f"Fetched {url} at {current_time}\n"
         log_file.write(log_entry)
         print('Added log entry: ', log_entry)
 
