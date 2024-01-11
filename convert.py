@@ -1,8 +1,5 @@
-import os
 import re
-import time
 import requests
-from bs4 import BeautifulSoup
 
 def find_first_url(text):
     pattern = 'https://raw.githubusercontent.com/snakem982/proxypool/main/mihomo[a-zA-Z0-9]*?.yaml'
@@ -24,14 +21,10 @@ def write_content_to_file(content):
 
 def main():
     github_text = get_github_content('https://raw.githubusercontent.com/snakem982/proxypool/main/README.md')
-    print('github.text: ' + github_text)
-
     result = find_first_url(github_text)
-    github = get_github_content(result)
-    print('github: '+github)
     if result:
+        github = get_github_content(result)
         write_content_to_file(github)
-        time.sleep(5)
         
 if __name__ == "__main__":
     main()
