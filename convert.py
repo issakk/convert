@@ -15,24 +15,24 @@ def get_github_content(url):
     response = requests.get(url, headers=headers)
     return response.text
 
-def write_content_to_file(content, log_path):
+def write_content_to_file(url,content, log_path):
     file_path = 'github.txt'
     with open(file_path, 'w', encoding='utf-8') as file:
         file.write(content)
     
     with open(log_path, 'a', encoding='utf-8') as log_file:  # 'a' for appending
-        log_entry = f"Fetched {result} at {datetime.now()}\n"
+        log_entry = f"Fetched {url} at {datetime.now()}\n"
         log_file.write(log_entry)
         print('Added log entry: ', log_entry)
 
 def main():
     github_text = get_github_content('https://raw.githubusercontent.com/snakem982/proxypool/main/README.md')
-    result = find_first_url(github_text)
-    print('result: '+result)
+    url = find_first_url(github_text)
+    print('url: '+url)
     if result:
-        github = get_github_content(result)
+        github = get_github_content(url)
         print('fetched!')
-        write_content_to_file(github, 'fetch_log.txt')
+        write_content_to_file(url,github, 'fetch_log.txt')
         
 if __name__ == "__main__":
     main()
