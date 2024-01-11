@@ -22,6 +22,7 @@ def write_content_to_file(content):
 def main():
     github_text = get_github_content('https://raw.githubusercontent.com/snakem982/proxypool/main/README.md')
     result = find_first_url(github_text)
+    print('result: '+result)
     if result:
         github = get_github_content(result)
         print('fetched!')
