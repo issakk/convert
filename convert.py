@@ -24,6 +24,7 @@ def main():
     result = find_first_url(github_text)
     if result:
         github = get_github_content(result)
+        print('fetched!')
         write_content_to_file(github)
         
 if __name__ == "__main__":
