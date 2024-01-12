@@ -126,3 +126,4 @@ Fetched https://raw.githubusercontent.com/snakem982/proxypool/main/mihomoffde6.y
 Fetched https://raw.githubusercontent.com/snakem982/proxypool/main/mihomoffde6.yaml at 2024-01-12 07:50:07.064545
 Fetched https://raw.githubusercontent.com/snakem982/proxypool/main/mihomoffde6.yaml at 2024-01-12 07:56:49.252098
 Fetched https://raw.githubusercontent.com/snakem982/proxypool/main/mihomo4472c.yaml at 2024-01-12 08:51:26.981935
+Fetched https://raw.githubusercontent.com/snakem982/proxypool/main/mihomo4472c.yaml at 2024-01-12 09:45:52.657137
