@@ -28,7 +28,8 @@ def write_content_to_file(url,content, log_path):
 
 def main():
     github_text = get_github_content('https://raw.githubusercontent.com/snakem982/proxypool/main/README.md')
-    url = find_first_url(github_text)
+    # url = find_first_url(github_text)
+    url='http://740220.xyz:12580/clash/proxies?c=CN,HK,TW,ZZ,SG&speed=30'
     print('url: '+url)
     if url:
         github = get_github_content(url)
