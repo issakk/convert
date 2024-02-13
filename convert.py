@@ -13,10 +13,6 @@ links_and_formats = [
     {
         "url": "https://raw.githubusercontent.com/snakem982/proxypool/main/proxies.txt",
         "format": "- type: clash\n   options:\n     url: {url}?speed=200"
-    },
-    {
-        "url": "https://raw.githubusercontent.com/snakem982/proxypool/main/webfuzz.yaml",
-        "format": "- type: webfuzz\n   options:\n     url: {url}"
     }
 ]
 
