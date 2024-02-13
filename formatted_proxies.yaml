@@ -1,0 +1,13 @@
+- type: subscribe
+   options:
+     url: https://raw.githubusercontent.com/snakem982/proxypool/main/nodelist.txt
+- type: tgchannel
+   options:
+     channel: https://raw.githubusercontent.com/snakem982/proxypool/main/tgchannel.json
+     num: 200
+- type: clash
+   options:
+     url: https://raw.githubusercontent.com/snakem982/proxypool/main/proxies.txt?speed=200
+- type: webfuzz
+   options:
+     url: https://raw.githubusercontent.com/snakem982/proxypool/main/webfuzz.yaml
