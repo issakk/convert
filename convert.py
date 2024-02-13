@@ -1,40 +1,33 @@
-import re
 import requests
-from datetime import datetime, timedelta
 
-
-def find_first_url(text):
-    pattern = 'https://raw.githubusercontent.com/snakem982/proxypool/main/mihomo[a-zA-Z0-9]*?.yaml'
-    match = re.search(pattern, text)
-    return match.group(0) if match else None
-
-def get_github_content(url):
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+# 定义链接和对应的格式
+links_and_formats = [
+    {
+        "url": "https://raw.githubusercontent.com/snakem982/proxypool/main/nodelist.txt",
+        "format": "- type: subscribe\n   options:\n     url: {url}"
+    },
+    {
+        "url": "https://raw.githubusercontent.com/snakem982/proxypool/main/tgchannel.json",
+        "format": "- type: tgchannel\n   options:\n     channel: {url}\n     num: 200"
+    },
+    {
+        "url": "https://raw.githubusercontent.com/snakem982/proxypool/main/proxies.txt",
+        "format": "- type: clash\n   options:\n     url: {url}?speed=200"
+    },
+    {
+        "url": "https://raw.githubusercontent.com/snakem982/proxypool/main/webfuzz.yaml",
+        "format": "- type: webfuzz\n   options:\n     url: {url}"
     }
-    response = requests.get(url, headers=headers)
-    return response.text
+]
 
-def write_content_to_file(url,content, log_path):
-    file_path = 'github.txt'
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(content)
-    
-    with open(log_path, 'a', encoding='utf-8') as log_file:  # 'a' for appending
-        current_time = datetime.utcnow() + timedelta(hours=8)
-        log_entry = f"Fetched {url} at {current_time}\n"
-        log_file.write(log_entry)
-        print('Added log entry: ', log_entry)
+# 下载内容并格式化
+formatted_content = []
+for link_info in links_and_formats:
+    response = requests.get(link_info["url"])
+    if response.status_code == 200:
+        formatted_line = link_info["format"].format(url=response.url)
+        formatted_content.append(formatted_line)
 
-def main():
-    github_text = get_github_content('https://raw.githubusercontent.com/snakem982/proxypool/main/README.md')
-    # url = find_first_url(github_text)
-    url='http://740220.xyz:12580/clash/proxies?c=CN,HK,TW,ZZ,SG&speed=30'
-    print('url: '+url)
-    if url:
-        github = get_github_content(url)
-        print('fetched!')
-        write_content_to_file(url,github, 'fetch_log.txt')
-        
-if __name__ == "__main__":
-    main()
+# 将格式化后的内容保存到文件
+with open("formatted_proxies.yaml", "w") as file:
+    file.write("\n".join(formatted_content))
