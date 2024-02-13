@@ -25,7 +25,8 @@ formatted_content = []
 for link_info in links_and_formats:
     response = requests.get(link_info["url"])
     if response.status_code == 200:
-        formatted_line = link_info["format"].format(url=response.url)
+        # 假设每个 URL 的内容就是我们需要替换的 URL
+        formatted_line = link_info["format"].format(url=response.text.strip())
         formatted_content.append(formatted_line)
 
 # 将格式化后的内容保存到文件
