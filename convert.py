@@ -25,9 +25,11 @@ formatted_content = []
 for link_info in links_and_formats:
     response = requests.get(link_info["url"])
     if response.status_code == 200:
-        # 假设每个 URL 的内容就是我们需要替换的 URL
-        formatted_line = link_info["format"].format(url=response.text.strip())
-        formatted_content.append(formatted_line)
+        # 每一行是一个 URL
+        urls = response.text.strip().splitlines()
+        for url in urls:
+            formatted_line = link_info["format"].format(url=url.strip())
+            formatted_content.append(formatted_line)
 
 # 将格式化后的内容保存到文件
 with open("formatted_proxies.yaml", "w") as file:
